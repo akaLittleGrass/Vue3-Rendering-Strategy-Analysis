@@ -294,4 +294,5 @@ a↔f、g↔c、a↔c、g↔f 四组节点比较无一致，去查找 f，将之
 ## 参考资料
 
 [1] 尤雨溪 - Vue.js 3.0 Beta 分享
+
 [2] Vue3 源码：https://github.com/vuejs/vue-next
