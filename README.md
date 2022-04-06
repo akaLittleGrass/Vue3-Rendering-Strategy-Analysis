@@ -248,13 +248,13 @@ else if (i > e2) {
 
 <img width=600 src="https://s2.loli.net/2022/04/02/zGLvpN7wxSl2X5i.png" >
 
-```javscript
-const map = {e:2, c:3, d:4, h:5} // 新节点序列中，未知序列的节点与其下标的映射
-const newIndexToOldIndexMap= [0, 0, 0, 0]
+```javascript
+const map = { e: 2, c: 3, d: 4, h: 5 }; // 新节点序列中，未知序列的节点与其下标的映射
+const newIndexToOldIndexMap = [0, 0, 0, 0];
 for (i = s1; i <= e1; i++) {
-      const prevChild = c1[i]
-      newIndex = map.get(prevChild.key)
-      newIndexToOldIndexMap[newIndex - s2] = i + 1
+  const prevChild = c1[i];
+  newIndex = map.get(prevChild.key);
+  newIndexToOldIndexMap[newIndex - s2] = i + 1;
 }
 ```
 
