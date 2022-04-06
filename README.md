@@ -17,7 +17,9 @@
 
 ## 简介
 
-&ensp;&ensp;&ensp;&ensp;前端宝藏框架 Vue 如今已经来到 3.x 的版本。Vue3 自 2018 年 12 月开始原型设计，2019 年 1 月开启 RFC 征求意见，2020 年 4 月发布 beta 测试版，并于 2020 年 9 月发布了 alpha 正式版，距今已一年有余
+&ensp;&ensp;&ensp;&ensp;前端宝藏框架 Vue 如今已经来到 3.x 的版本。Vue3 自 2018 年 12 月开始原型设计，2019 年 1 月开启 RFC 征求意见，2020 年 4 月发布 beta 测试版，并于 2020 年 9 月发布了 alpha 正式版
+
+<img width=750 src="https://s2.loli.net/2022/04/06/ryq9PVkYbREicL4.png" >
 
 &ensp;&ensp;&ensp;&ensp;相对于 Vue2，Vue3 在框架性能提升的方面做出了一些新的尝试，并且提供了组合式 API、自定义的渲染 API 以及更好的 TypeScript、Tree-Shaking 的支持，更带来了 Fragment、Teleport、Suspense 等新特性，本文将给大家带来 Vue3 中渲染策略的介绍以及算法层面的分析
 
