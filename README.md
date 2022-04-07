@@ -17,11 +17,11 @@
 
 ## 简介
 
-&ensp;&ensp;&ensp;&ensp;前端宝藏框架 Vue 如今已经来到 3.x 的版本。Vue3 自 2018 年 12 月开始原型设计，2019 年 1 月开启 RFC 征求意见，2020 年 4 月发布 beta 测试版，并于 2020 年 9 月发布了 alpha 正式版
+&ensp;&ensp;&ensp;&ensp;前端宝藏框架 Vue 如今已经来到 3.x 的版本。Vue3 自 2018 年 12 月开始原型设计，2019 年 1 月开启 RFC 征求意见，2020 年 4 月发布 beta 测试版，并于 2020 年 9 月迎来了 alpha 正式版
 
-<img width=750 src="https://s2.loli.net/2022/04/06/ryq9PVkYbREicL4.png" >
+<img width=830 src="https://s2.loli.net/2022/04/06/ryq9PVkYbREicL4.png" >
 
-&ensp;&ensp;&ensp;&ensp;相对于 Vue2，Vue3 在框架性能提升的方面做出了一些新的尝试，并且提供了组合式 API、自定义的渲染 API 以及更好的 TypeScript、Tree-Shaking 的支持，更带来了 Fragment、Teleport、Suspense 等新特性，本文将给大家带来 Vue3 中渲染策略的介绍以及算法层面的分析
+&ensp;&ensp;&ensp;&ensp;相对于 Vue2，Vue3 在框架性能提升的方面做出了许多新的尝试，并且提供了组合式 API、自定义的渲染 API 以及更好的 TypeScript、Tree-Shaking 的支持，更带来了 Fragment、Teleport、Suspense 等新特性，本文将给大家带来 Vue3 中渲染策略的介绍以及算法层面的分析
 
 ## Vue3 的渲染策略
 
@@ -57,13 +57,29 @@ const enum PatchFlags {
 }
 ```
 
-<span>{{ msg }}</span>这样的动态节点 patchFlag 便为 1，表示它是一个动态的文本节点
+形如这样的节点 patchFlag 便为 1，表示它是一个动态的文本节点：
 
-<span :class="info">233</span>这样带有动态 class 的节点 patchFlag 为 2
+```html
+<span>{{ msg }}</span>
+```
 
-<span :class="detail" :id="detail">{{ detail }}</span>这样同时带有动态文本、class、id 的节点 patchFlag 则为 1+2+8=11，以此类推
+带有动态 class 的节点 patchFlag 为 2：
 
-诸如<span @click="handleClick"></span>这样使用 v-on 绑定了函数的节点，Vue3 会生成一个内联的函数去引用 Vue 实例上的 handleClick 属性，并将这个内联函数缓存起来，后续 DOM 更新的时候会直接从缓存当中读取，相当于每次使用的都是同一个函数，不会被更新，因此这个带有事件绑定的节点就成了一个静态节点，即便我们绑定的函数是箭头函数，形如<span @click="() => foo()"></span>，其结果也是一样的
+```html
+<span :class="info">233</span>
+```
+
+同时带有动态文本、class、id 的节点 patchFlag 则为 1+2+8=11，以此类推：
+
+```html
+<span :class="detail" :id="detail">{{ detail }}</span>
+```
+
+使用 v-on 绑定了函数的节点，Vue3 会生成一个内联的函数去引用 Vue 实例上的 handleClick 属性，并将这个内联函数缓存起来，后续 DOM 更新的时候会直接从缓存当中读取，相当于每次使用的都是同一个函数，不会被更新，因此这个带有事件绑定的节点就成了一个静态节点，即便我们绑定的函数是箭头函数，形如<span @click="() => foo()"></span>，其结果也是一样的
+
+```html
+<span @click="handleClick"></span>
+```
 
 优化之后的编译结果：
 
