@@ -264,17 +264,26 @@ else if (i > e2) {
 
 <img width=600 src="https://s2.loli.net/2022/04/02/zGLvpN7wxSl2X5i.png" >
 
+遍历示意图：
+
+<img width=600 src="https://s2.loli.net/2023/03/10/54JrcPdnZHvYoxu.png" >
+
 ```javascript
-const map = { e: 2, c: 3, d: 4, h: 5 }; // 新节点序列中，未知序列的节点与其下标的映射
+// 需要patch的节点个数是e2-s2+1=4
+const map = { e: 2, c: 3, d: 4, h: 5 }; // 在新节点序列中，未知序列的节点与其下标的映射
 const newIndexToOldIndexMap = [0, 0, 0, 0];
 for (i = s1; i <= e1; i++) {
   const prevChild = c1[i];
   newIndex = map.get(prevChild.key);
   newIndexToOldIndexMap[newIndex - s2] = i + 1;
 }
+// 遍历后得到newIndexToOldIndexMap = [5,3,4,0]
+// 四个数字分别代表新节点序列中e、c、d、h四个节点在旧节点序列中的下标加1
 ```
 
-在这段逻辑中，我们先去遍历旧的节点序列，找到新未知序列的节点在旧序列中的下标，e、c、d、f 四个节点在旧序列中的下标分别为 4、2、3、-1（-1 表示不存在），将这些下标+1，得到数组[5, 3, 4, 0]，在这个数组中，最长递增子序列为[3, 4]，这两个元素在数组中的下标分别为 1、2，随即构建数组[1, 2]， 接着我们从后向前遍历[5, 3, 4, 0]这个数组，会遇到三种情况：
+<img width=600 src="https://s2.loli.net/2022/04/02/zGLvpN7wxSl2X5i.png" >
+
+在这段逻辑中，我们先去遍历旧的节点序列，找到新未知序列的节点在旧序列中的下标，e、c、d、h 四个节点在旧序列中的下标分别为 4、2、3、-1（-1 表示不存在），将这些下标+1，得到数组[5, 3, 4, 0]，在这个数组中，最长递增子序列为[3, 4]，这两个元素在数组中的下标分别为 1、2，随即构建数组[1, 2]， 接着我们从后向前遍历[5, 3, 4, 0]这个数组，会遇到三种情况：
 
 1.若当前值为 0，代表是新的节点，执行插入操作
 
@@ -282,7 +291,11 @@ for (i = s1; i <= e1; i++) {
 
 3.将该旧节点移动到新节点所在的位置
 
-至此，整个 Vue3 的 DOM Diff 过程就完成了
+具体到问题中就是e挪到c的前面，c、d保持不动，q更新为f：
+
+<img width=600 src="https://s2.loli.net/2023/03/10/ilcjeYIhHBCmfRN.png" >
+
+至此，整个 Vue3 的 DOM Diff 就完成了
 
 ## Vue3 对比 Vue2
 
