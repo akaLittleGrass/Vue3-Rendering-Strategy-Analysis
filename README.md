@@ -264,9 +264,7 @@ else if (i > e2) {
 
 <img width=720 src="https://s2.loli.net/2022/04/02/zGLvpN7wxSl2X5i.png" >
 
-遍历示意图：
-
-<img width=600 src="https://s2.loli.net/2023/03/10/54JrcPdnZHvYoxu.png" >
+遍历逻辑及示意图：
 
 ```javascript
 // 需要patch的节点个数是e2-s2+1=4
@@ -280,6 +278,8 @@ for (i = s1; i <= e1; i++) {
 // 遍历后得到newIndexToOldIndexMap = [5,3,4,0]
 // 四个数字分别代表新节点序列中e、c、d、h四个节点在旧节点序列中的下标加1
 ```
+
+<img width=600 src="https://s2.loli.net/2023/03/10/54JrcPdnZHvYoxu.png" >
 
 在这段逻辑中，我们先去遍历旧的节点序列，找到新未知序列的节点在旧序列中的下标，e、c、d、h 四个节点在旧序列中的下标分别为 4、2、3、-1（-1 表示不存在），将这些下标+1，得到数组[5, 3, 4, 0]，在这个数组中，最长递增子序列为[3, 4]，这两个元素在数组中的下标分别为 1、2，随即构建数组[1, 2]， 接着我们从后向前遍历[5, 3, 4, 0]这个数组，会遇到三种情况：
 
