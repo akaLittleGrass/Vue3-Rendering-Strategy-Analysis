@@ -250,7 +250,7 @@ else if (i > e2) {
 
 假设当对比停止时，新旧序列都没有遍历完，我们把未遍历到的部分称为未知序列，如下图所示：
 
-<img width=750 src="https://s2.loli.net/2022/04/02/iVM7wWID9lfxquS.png" >
+<img width=720 src="https://s2.loli.net/2022/04/02/iVM7wWID9lfxquS.png" >
 
 不难发现新节点序列相比于旧节点序列，c、d、e 三个节点更换了位置，e 来到了 c 的前面，q 换成了 f
 
@@ -262,7 +262,7 @@ else if (i > e2) {
 
 我们把不存在的节点的下标定为-1，那么新序列中的 e、c、d、f 四个节点在旧序列中的下标就分别为[4, 2, 3, -1]，显然最长递增子序列为[2, 3]，说明 c、d 两个节点的位置保持不变，其余节点 e 需要移动，q 需要卸载并挂载 f
 
-<img width=750 src="https://s2.loli.net/2022/04/02/zGLvpN7wxSl2X5i.png" >
+<img width=720 src="https://s2.loli.net/2022/04/02/zGLvpN7wxSl2X5i.png" >
 
 遍历示意图：
 
