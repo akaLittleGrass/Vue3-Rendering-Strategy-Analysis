@@ -291,7 +291,7 @@ for (i = s1; i <= e1; i++) {
 
 具体到问题中就是e挪到c的前面，c、d保持不动，q更新为f：
 
-<img width=600 src="https://s2.loli.net/2023/03/10/ilcjeYIhHBCmfRN.png" >
+<img width=600 src="https://s2.loli.net/2023/03/10/9izvrbtM1RTpwmO.png" >
 
 至此，整个 Vue3 的 DOM Diff 就完成了
 
