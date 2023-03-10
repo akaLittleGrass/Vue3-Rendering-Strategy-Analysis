@@ -220,11 +220,9 @@ while (i <= e1 && i <= e2) {
 
 ```javascript
 if (i > e1) {
-  if (i <= e2) {
-    while (i <= e2) {
-      patch(null, c2[i]);
-      i++;
-    }
+  while (i <= e2) {
+    patch(null, c2[i]);
+    i++;
   }
 }
 ```
