@@ -212,7 +212,7 @@ while (i <= e1 && i <= e2) {
 
 假设 DOM 变更的情况是在第二个节点的后面新增了一个节点，那么经过这两步之后，我们得到了这样一个结果：
 
-<img width=500 src="https://s2.loli.net/2022/04/02/rVNJEHohuBmTMKj.png" >
+<img width=500 src="https://s2.loli.net/2023/03/10/DfqxEZlyLnm5Nh6.png" >
 
 显然，在这种情况下，我们只需要把新增的 f 节点在相应的位置挂载上去就行了
 
@@ -233,7 +233,7 @@ if (i > e1) {
 
 我们把上一步的假设反过来，如果是旧的子节点序列比新的多了一个节点，那么类似地，只要把旧序列中多出的节点卸载掉就可以了
 
-<img width=460 src="https://s2.loli.net/2022/04/02/uAMBdCbJU3gtpIV.png" >
+<img width=460 src="https://s2.loli.net/2023/03/10/sfEPan5G6FVKLd9.png" >
 
 ```javascript
 else if (i > e2) {
@@ -320,7 +320,7 @@ a↔f、g↔c、a↔c、g↔f 四组节点比较无一致，去查找 f，将之
 
 ## 总结
 
-&ensp;&ensp;&ensp;&ensp;总的来看，Vue3 相对于 Vue2，在编译和 DOM Diff 等方面对框架性能的提升做出了新的探索和努力。在大型应用中，标记动态元素的 patchFlag、将 DOM 节点复用的静态提升、类似 React useMemo 的事件缓存等特性带来的收益是很明显的，并且服务端渲染的性能也迈上了一个新的台阶。其实除了以上介绍的这些，Vue3 在 DOM 挂载、异步渲染、打包构建等其他方面也带来了许多有意思的新特性，大家可以在工程开发中多多探索和尝试，欢迎将心得收获再与我分享讨论
+&ensp;&ensp;&ensp;&ensp;总的来看，Vue3 相对于 Vue2，在编译和 DOM Diff 等方面对框架性能的提升做出了新的探索和努力。在大型应用中，标记动态元素的 patchFlag、将 DOM 节点复用的静态提升、类似 React useMemo 的事件缓存等编译时优化带来的收益是很明显的，并且让服务端渲染的性能也迈上了一个新的台阶。其实除了以上介绍的这些，Vue3 在 DOM 挂载、异步渲染、打包构建等其他方面也带来了许多有意思的新特性，大家可以在工程开发中多多探索和尝试，欢迎将心得收获再与我分享讨论
 
 ## 参考资料
 
